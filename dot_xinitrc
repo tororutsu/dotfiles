@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# DBUS #
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval "$(dbus-launch --auto-syntax --exit-with-x11)"
+fi
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
+
+exec herbstluftwm --locked
