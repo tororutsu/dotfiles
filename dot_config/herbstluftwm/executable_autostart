@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# this is a simple config for herbstluftwm
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+hc() {
+    herbstclient "$@"
+}
+
+if hc silent new_attr bool my_not_first_autostart ; then
+    pipewire &
+    pipewire-pulse &
+    wireplumber &
+fi
+
+hc emit_hook reload
+
+xsetroot -solid '#43434e'
+
+# keys
+source $HOME/.config/herbstluftwm/keys
+
+# theme
+source $HOME/.config/herbstluftwm/theme
+
+# rules
+source $HOME/.config/herbstluftwm/rules
+
+# unlock, just to be sure
+hc unlock
+
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+hc detect_monitors
+
+source $HOME/.config/polybar/launch.sh

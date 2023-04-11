@@ -1,0 +1,125 @@
+# vim:fileencoding=utf:foldmethod=marker
+
+## sxhkd ## {{{
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + shift + Escape
+	pkill -x sxhkd && sxhkd
+#}}}
+
+## Herbs ## {{{
+
+super + shift + {q,r,c}
+    herbstclient {quit,reload,close}
+
+super + Return
+    herbstclient spawn kitty --single-instance --title main
+
+super + d
+    herbstclient spawn kitty --title plauncher $HOME/github.com/scripts/plauncher
+
+super + y
+    herbstclient spawn kitty --title ytp $HOME/github.com/scripts/ytp
+
+super + shift + n
+    herbstclient spawn kitty --title mysh mysh
+#}}}
+
+## Audio Keys ## {{{
+
+XF86AudioLowerVolume
+   pactl set-sink-volume @DEFAULT_SINK@ -10% 
+
+XF86AudioRaiseVolume
+   pactl set-sink-volume @DEFAULT_SINK@ +10% 
+
+XF86AudioMute
+   pactl set-sink-mute @DEFAULT_SINK@ toggle
+#}}}
+
+## Movment ## {{{
+
+super + {h,j,k,l}
+    herbstclient focus {left,down,up,right}
+
+super + shift + {h,j,k,l}
+    herbstclient shift {left,down,up,right}
+#}}}
+
+## Resizing ## {{{
+
+super + control + {h,j,k,l}
+    resizestep=0.02;\
+    herbstclient resize {left,down,up,right} +$resizestep
+#}}}
+
+## Focus ## {{{
+
+super + BackSpace
+    herbstclient cycle_monitor
+
+super + {_,shift+} Tab
+    herbstclient cycle_all {+,-}1
+
+super + c
+    herbstclient cycle
+#}}}
+
+## Frames ## {{{
+
+super + {u,o}
+    herbstclient split {bottom,right} 0.5
+
+super + control + space
+    herbstclient split explode
+#}}}
+
+## Layout ## {{{
+
+
+super + space
+    herbstclient cycle_layout +1 vertical horizontal max vertical grid
+
+super + r
+    herbstclient remove
+
+super + {s,f}
+    herbstclient {floating,fullscreen} toggle
+
+super + shift + {f,d}
+    herbstclient set_attr clients.focus.{floating,decorated} toggle
+
+super + shift + m
+    herbstclient set_attr clients.focus.minimized true
+
+super + control + m
+    herbstclient jumpto last-minimized
+
+super + p
+    herbstclient pseudotile toggle
+##}}}
+
+## Mouse ## {{{
+
+super + {button1,button2,button3}
+    herbstclient {move,zoom,resize}
+#}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

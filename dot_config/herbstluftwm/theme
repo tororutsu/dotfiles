@@ -1,0 +1,41 @@
+## Herbs Theme ##
+
+#feh --bg-fill /path/to/image.jpg # This has to be a local image
+hc set frame_border_active_color '#e109a8'
+#hc set frame_border_normal_color '#240017'
+hc set frame_bg_normal_color 'transparent'
+hc set frame_bg_active_color 'transparent'
+hc set frame_border_width 0
+#hc set always_show_frame 1
+hc set frame_bg_transparent 1
+hc set frame_transparent_width 0
+hc set frame_gap 0
+
+hc attr theme.title_when never
+hc attr theme.active.color '#9000f9'
+hc attr theme.normal.color '#281c2c'
+#hc attr theme.urgent.color '#ff0059'
+hc attr theme.inner_width 0
+hc attr theme.inner_color '#000000'
+hc attr theme.border_width 2
+hc attr theme.floating.border_width 4
+hc attr theme.floating.outer_width 0
+hc attr theme.floating.outer_color '#000000'
+hc attr theme.active.inner_color '#3c004d'
+hc attr theme.active.outer_color '#670774'
+hc attr theme.background_color '#121212'
+
+hc set window_gap 0
+hc set frame_padding 2
+
+# copy inner color to outer_color
+for state in active urgent normal ; do
+    hc substitute C theme.${state}.inner_color \
+        attr theme.${state}.outer_color C
+done
+
+hc set smart_window_surroundings off
+hc set smart_frame_surroundings on
+hc set mouse_recenter_gap 0
+
+
